@@ -54,6 +54,7 @@ checkHealth() {
     while [[ $pingCount -lt 2 && $stopIterate == 0 ]]; do
         startPingTime=`date +%s`
         printf "\ncurl -m 10 -X GET $url"
+        curl --ipv4 -v $url
         curl -m 10 -X GET $url -o /dev/null 2>&1
         returnCode=$?
         if [ $returnCode = 0 ]
