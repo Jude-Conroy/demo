@@ -57,9 +57,9 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
-            rm -rf /usr/src/demo
+            rm -rf /home/ec2-user/demo
             git clone https://github.com/Jude-Conroy/demo.git
-            cd demo
+            cd /home/ec2-user/demo
             git checkout main
             git pull origin main
             sudo chmod +x ./deploy.sh
