@@ -32,7 +32,8 @@ sudo cp nginx.conf /etc/nginx/conf.d/default.conf
 sudo systemctl restart nginx
 
 # build dockerfile
-sudo docker build -f /home/ec2-user/demo/Dockerfile -t demo:latest .
+cd /home/ec2-user/demo
+sudo docker build -f Dockerfile -t demo:latest .
 
 # run in detached mode
 sudo docker run -p 8080:8080 -d demo:latest
