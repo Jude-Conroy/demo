@@ -1,4 +1,4 @@
-name: Deploy AWS EC2
+name: Deploy AWS EC2 - demo
 on:
   push:
     branches:
