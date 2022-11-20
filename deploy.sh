@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'Starting to Deploy...with yum'
+echo 'Starting to Deploy...with yum 3'
 
 # Install required dependencies
 sudo yum update
