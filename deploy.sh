@@ -1,20 +1,29 @@
 #!/bin/bash
 
-echo 'Starting to Deploy...'
+echo 'Starting to Deploy...with yum'
 
 # Install required dependencies
-sudo apt-get update
-sudo apt-get upgrade
-yes | sudo apt install openjdk-11-jdk
-yes | sudo apt-get install nginx
-yes | sudo apt install apt-transport-https ca-certificates curl software-properties-common
-yes | curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-apt-cache policy docker-ce
-yes | sudo apt install docker-ce
+sudo yum update
+sudo yum upgrade
+yes | sudo yum install openjdk-11-jdk
+yes | sudo yum install nginx
+#yes | sudo apt install apt-transport-https ca-certificates curl software-properties-common
+#yes | curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+#sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+#apt-cache policy docker-ce
+yes | sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+yes | sudo yum -y install curl wget unzip awscli aws-cfn-bootstrap nfs-utils chrony conntrack jq ec2-instance-connect socat
+
+yes | sudo yum install docker-ce
 
 # make sure demo docker is not running
-sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=demo:latest --format="{{.ID}}"))
+#sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=demo:latest --format="{{.ID}}"))
+
+sudo amazon-linux-extras enable docker
+sudo yum -y install docker
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now docker
 
 # copy nginx conf to default
 sudo cp nginx.conf /etc/nginx/conf.d/default.conf
