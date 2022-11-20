@@ -28,9 +28,8 @@
 
 name: Deploy AWS EC2 - AWS-Git created
 on:
-  push:
-    branches:
-      - master
+   [push, fork]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
