@@ -6,7 +6,8 @@ echo 'Starting to Deploy...with yum 3'
 sudo yum update
 sudo yum upgrade
 yes | sudo yum install openjdk-11-jdk
-yes | sudo yum install nginx
+#yes | sudo yum install nginx
+yes | sudo amazon-linux-extras install nginx1
 #yes | sudo apt install apt-transport-https ca-certificates curl software-properties-common
 #yes | curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 #sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
