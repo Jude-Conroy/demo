@@ -15,7 +15,7 @@ yes | sudo amazon-linux-extras install nginx1
 yes | sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 yes | sudo yum -y install curl wget unzip awscli aws-cfn-bootstrap nfs-utils chrony conntrack jq ec2-instance-connect socat
 
-yes | sudo yum install docker-ce
+yes | sudo yum install docker
 
 # make sure demo docker is not running
 #sudo docker rm $(sudo docker stop $(sudo docker ps -a -q --filter ancestor=demo:latest --format="{{.ID}}"))
