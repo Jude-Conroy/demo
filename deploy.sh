@@ -5,7 +5,7 @@ echo 'Starting to Deploy...with yum 3'
 # Install required dependencies
 sudo yum update
 sudo yum upgrade
-yes | sudo yum install openjdk-11-jdk
+yes | sudo amazon-linux-extras install java-openjdk11
 #yes | sudo yum install nginx
 yes | sudo amazon-linux-extras install nginx1
 #yes | sudo apt install apt-transport-https ca-certificates curl software-properties-common
